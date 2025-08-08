@@ -20,8 +20,8 @@ return new class extends Migration
             $table->foreignIdFor(Campaign::class);
 
             $table->string('address');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 11, 8);
+            $table->decimal('lat', 10, 8);
+            $table->decimal('lng', 11, 8);
             $table->text('notes')->nullable();
             $table->string('image')->nullable();
 

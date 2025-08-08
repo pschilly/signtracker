@@ -45,7 +45,7 @@ class SignForm
                                                     
                                                     try {
                                                         const position = await new Promise((resolve, reject) => {
-                                                            navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true });
+                                                            navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
                                                         });
                                                         
                                                         const lat = position.coords.lat;
