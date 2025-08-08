@@ -78,7 +78,7 @@ class ClientPanelProvider extends PanelProvider
             ->tenant(Team::class, slugAttribute: 'domain')
             ->tenantRegistration(RegisterTeam::class)
             ->tenantProfile(EditTeamProfile::class)
-            ->tenantDomain('{tenant:domain}.signtracker.test')
+            //->tenantDomain('{tenant:domain}.signtracker.test')
             ->tenantMenu(false)
             ->plugins([
                 FilamentBackgroundsPlugin::make()
