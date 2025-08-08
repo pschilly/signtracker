@@ -57,11 +57,14 @@ class SignForm
                                                         // Get Location by Coords w/ Google Places API
                                                         const googleApiKey = 'AIzaSyC-2wmG0g5n2qIgVwtihiam8p5vDrwuyjw'; 
 
-                                                        const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${googleApiKey}`);
-                                                        const data = await response.json();
+                                                        // const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${googleApiKey}`);
+                                                        // const data = await response.json();
                                                         
-                                                        const address = data.results[0] ? data.results[0].formatted_address : 'Address not found';
-
+                                                        // const address = data.results[0] ? data.results[0].formatted_address : 'Address not found';
+                                                        // console.log(data);
+                                                        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${long}`);
+                                                        const data = await response.json();
+                                                        const address = data.display_name || "Address not found";
                                                         $wire.set('data.address',address);
                                                     } catch (error) {
                                                         console.error("Geolocation error:", error);
