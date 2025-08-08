@@ -37,7 +37,7 @@ class ClientPanelProvider extends PanelProvider
             ->login()
             ->profile()
             ->databaseNotifications()
-            // ->registration()
+            ->registration()
             ->emailVerification()
             ->emailChangeVerification()
             ->colors([
