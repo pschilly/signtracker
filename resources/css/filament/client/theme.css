@@ -1,0 +1,19 @@
+@import "../../../../vendor/filament/filament/resources/css/theme.css";
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+.gm-style-iw {
+    @apply text-black;
+}
+.gm-style-iw-chr {
+    @apply pb-2;
+}
+.gm-style-iw-chr > button > span {
+    background: #000;
+}
+
+.gm-style-iw-ch::before {
+    @apply font-bold text-lg;
+    content: "Address";
+}
