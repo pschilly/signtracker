@@ -45,11 +45,11 @@ class SignForm
                                                     
                                                     try {
                                                         const position = await new Promise((resolve, reject) => {
-                                                            navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: false });
+                                                            navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true });
                                                         });
                                                         
-                                                        const lat = position.coords.lat;
-                                                        const long = position.coords.lng;
+                                                        const lat = position.coords.latitude;
+                                                        const long = position.coords.longitude;
                                                                                 
                                                         $wire.set('data.lat',lat);
                                                         $wire.set('data.lng', long);
