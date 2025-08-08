@@ -65,7 +65,7 @@ class CampaignResource extends Resource
         return [
             'index' => ListCampaigns::route('/'),
             'view' => ViewCampaign::route('/{record}'),
-            'create' => CreateCampaign::route('/create'),
+            // 'create' => CreateCampaign::route('/create'),
             'edit' => EditCampaign::route('/{record}/edit'),
             'signs' => ManageCampaignSigns::route('/{record}/signs')
         ];
