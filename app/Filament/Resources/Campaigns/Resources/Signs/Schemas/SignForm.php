@@ -57,14 +57,19 @@ class SignForm
                                                         // Get Location by Coords w/ Google Places API
                                                         const googleApiKey = 'AIzaSyC-2wmG0g5n2qIgVwtihiam8p5vDrwuyjw'; 
 
+                                                        //GOOGLE API BURRRF?
                                                         // const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${googleApiKey}`);
                                                         // const data = await response.json();
                                                         
                                                         // const address = data.results[0] ? data.results[0].formatted_address : 'Address not found';
                                                         // console.log(data);
-                                                        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${long}`);
+                                                        
+                                                        // LocationIQ
+                                                        const locationIQtoken = "pk.7849fe90c704016d8ac2d60b1a3b2da1";
+                                                        const response = await fetch(`https://us1.locationiq.com/v1/reverse?key=${locationIQtoken}&lat=${lat}&lon=${long}&format=json&`);
                                                         const data = await response.json();
                                                         const address = data.display_name || "Address not found";
+
                                                         $wire.set('data.address',address);
                                                     } catch (error) {
                                                         console.error("Geolocation error:", error);
@@ -127,7 +132,15 @@ class SignForm
                             ->image()
                             ->imageEditor()
                             ->directory(fn() => Filament::getTenant()->domain . '/sign-images')
-                            ->columnSpan(6),
+                            ->columnSpan(6)
+
+                            ->imagePreviewHeight('250')
+                            ->loadingIndicatorPosition('left')
+                            ->panelAspectRatio('2:1')
+                            ->panelLayout('integrated')
+                            ->removeUploadedFileButtonPosition('right')
+                            ->uploadButtonPosition('left')
+                            ->uploadProgressIndicatorPosition('left'),
 
                         RichEditor::make('notes')
                             ->columnSpan(6)
